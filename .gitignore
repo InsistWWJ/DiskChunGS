@@ -41,6 +41,10 @@
 # .vscode/
 .VSCodeCounter/
 
+# claude
+# .claude/
+.claude/
+
 # results
 results/
 debug/
