@@ -22,21 +22,21 @@ cmake -B third_party/ORB-SLAM3/Thirdparty/DBoW2/build -G Ninja \
       -DCMAKE_BUILD_TYPE=Release \
       -DOpenCV_DIR=/workspace/third_party/install/opencv/lib/cmake/opencv4 \
       third_party/ORB-SLAM3/Thirdparty/DBoW2
-cmake --build third_party/ORB-SLAM3/Thirdparty/DBoW2/build
+cmake --build third_party/ORB-SLAM3/Thirdparty/DBoW2/build -j4
 
 # g2o
 echo "Building g2o..."
 cmake -B third_party/ORB-SLAM3/Thirdparty/g2o/build -G Ninja \
       -DCMAKE_BUILD_TYPE=Release \
       third_party/ORB-SLAM3/Thirdparty/g2o
-cmake --build third_party/ORB-SLAM3/Thirdparty/g2o/build
+cmake --build third_party/ORB-SLAM3/Thirdparty/g2o/build -j4
 
 # Sophus
 echo "Building Sophus..."
 cmake -B third_party/ORB-SLAM3/Thirdparty/Sophus/build -G Ninja \
       -DCMAKE_BUILD_TYPE=Release \
       third_party/ORB-SLAM3/Thirdparty/Sophus
-cmake --build third_party/ORB-SLAM3/Thirdparty/Sophus/build
+cmake --build third_party/ORB-SLAM3/Thirdparty/Sophus/build -j4
 
 # Uncompress vocabulary if needed
 if [ -f "third_party/ORB-SLAM3/Vocabulary/ORBvoc.txt.tar.gz" ] && [ ! -f "third_party/ORB-SLAM3/Vocabulary/ORBvoc.txt" ]; then
@@ -52,7 +52,7 @@ cmake -B third_party/ORB-SLAM3/build -G Ninja \
       -DCMAKE_CXX_FLAGS="-Wno-deprecated-declarations" \
       -DOpenCV_DIR=/workspace/third_party/install/opencv/lib/cmake/opencv4 \
       third_party/ORB-SLAM3
-cmake --build third_party/ORB-SLAM3/build
+cmake --build third_party/ORB-SLAM3/build -j4
 
 # Update PATH for ORB-SLAM3 library
 export LD_LIBRARY_PATH=$workdir/third_party/ORB-SLAM3/lib:$LD_LIBRARY_PATH
@@ -85,7 +85,7 @@ cmake -B build -G Ninja \
  -DCMAKE_CUDA_FLAGS="$CUDA_FLAGS" \
  -DCMAKE_CUDA_HOST_COMPILER=/usr/bin/g++
 
-cmake --build build -j16 # Reduce if causes OOM
+cmake --build build -j4
 
 echo "✓ Build completed successfully!"
 echo "----------------------------------------"
