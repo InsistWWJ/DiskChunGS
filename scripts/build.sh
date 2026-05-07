@@ -22,21 +22,21 @@ cmake -B third_party/ORB-SLAM3/Thirdparty/DBoW2/build -G Ninja \
       -DCMAKE_BUILD_TYPE=Release \
       -DOpenCV_DIR=/workspace/third_party/install/opencv/lib/cmake/opencv4 \
       third_party/ORB-SLAM3/Thirdparty/DBoW2
-cmake --build third_party/ORB-SLAM3/Thirdparty/DBoW2/build -j4
+cmake --build third_party/ORB-SLAM3/Thirdparty/DBoW2/build -j1
 
 # g2o
 echo "Building g2o..."
 cmake -B third_party/ORB-SLAM3/Thirdparty/g2o/build -G Ninja \
       -DCMAKE_BUILD_TYPE=Release \
       third_party/ORB-SLAM3/Thirdparty/g2o
-cmake --build third_party/ORB-SLAM3/Thirdparty/g2o/build -j4
+cmake --build third_party/ORB-SLAM3/Thirdparty/g2o/build -j1
 
 # Sophus
 echo "Building Sophus..."
 cmake -B third_party/ORB-SLAM3/Thirdparty/Sophus/build -G Ninja \
       -DCMAKE_BUILD_TYPE=Release \
       third_party/ORB-SLAM3/Thirdparty/Sophus
-cmake --build third_party/ORB-SLAM3/Thirdparty/Sophus/build -j4
+cmake --build third_party/ORB-SLAM3/Thirdparty/Sophus/build -j1
 
 # Uncompress vocabulary if needed
 if [ -f "third_party/ORB-SLAM3/Vocabulary/ORBvoc.txt.tar.gz" ] && [ ! -f "third_party/ORB-SLAM3/Vocabulary/ORBvoc.txt" ]; then
@@ -85,7 +85,7 @@ cmake -B build -G Ninja \
  -DCMAKE_CUDA_FLAGS="$CUDA_FLAGS" \
  -DCMAKE_CUDA_HOST_COMPILER=/usr/bin/g++
 
-cmake --build build -j4
+cmake --build build -j1
 
 echo "✓ Build completed successfully!"
 echo "----------------------------------------"
