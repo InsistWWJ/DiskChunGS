@@ -329,3 +329,15 @@ target_link_libraries(kitti_stereo
     gaussian_viewer    
     gaussian_mapper
     ${ORB_SLAM3_SOURCE_DIR}/lib/libORB_SLAM3.so)
+
+if(IS_ARM)
+    foreach(target_name
+            view_result
+            replica_mono
+            replica_rgbd
+            tum_mono
+            tum_rgbd
+            kitti_stereo)
+        target_link_options(${target_name} PRIVATE -Wl,--allow-shlib-undefined)
+    endforeach()
+endif()
