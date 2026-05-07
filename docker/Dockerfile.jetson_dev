@@ -36,8 +36,8 @@ RUN echo "export LD_LIBRARY_PATH=/workspace/repo/third_party/ORB-SLAM3/lib:\$LD_
 WORKDIR /workspace/repo
 
 # Copy entrypoint script
-COPY docker/docker-entrypoint.sh /
-RUN chmod +x /docker-entrypoint.sh
+COPY docker/docker-entrypoint-jetson.sh /
+RUN chmod +x /docker-entrypoint-jetson.sh
 
-ENTRYPOINT ["/docker-entrypoint.sh"]
+ENTRYPOINT ["/docker-entrypoint-jetson.sh"]
 CMD ["bash"]
