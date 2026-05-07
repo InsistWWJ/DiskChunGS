@@ -52,7 +52,7 @@ cmake -B third_party/ORB-SLAM3/build -G Ninja \
       -DCMAKE_CXX_FLAGS="-Wno-deprecated-declarations" \
       -DOpenCV_DIR=/workspace/third_party/install/opencv/lib/cmake/opencv4 \
       third_party/ORB-SLAM3
-cmake --build third_party/ORB-SLAM3/build -j4
+cmake --build third_party/ORB-SLAM3/build -j1
 
 # Update PATH for ORB-SLAM3 library
 export LD_LIBRARY_PATH=$workdir/third_party/ORB-SLAM3/lib:$LD_LIBRARY_PATH
